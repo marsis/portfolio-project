@@ -20,7 +20,7 @@ router.get('/photos', async(req, res) => {
         await fetch(`https://source.unsplash.com/1600x900/?mountains`).then((response)=> {
             console.log(response)
 
-            res.send(response.url)
+            res.send({body: response.url})
         })
 
             /* await fetch('https://unsplash.com/oauth/authorize', {
