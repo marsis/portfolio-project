@@ -26,7 +26,7 @@ router.post('/users', async (req, res) => {
         await user.save();
         const token = await user.generateAuthToken();
        // console.log('token', token)
-        res.status(201).send({user})
+        res.status(201).send({user, token})
     } catch (e) {
         if (e.code === 11000) {
        //  return res.status(400).send({error: 'E-mail already exists!'})
@@ -35,7 +35,7 @@ router.post('/users', async (req, res) => {
     }
 });
 
-router.post('/users/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password);
         console.log('user', user);
@@ -48,7 +48,10 @@ router.post('/users/login', async (req, res) => {
     }
 });
 
-router.post('/users/logout', auth, async (req, res)=> {
+router.post(`/logout`, auth, async (req, res)=> {
+    console.log('req', req)
+    const token = req.header('Authorization').replace('Bearer ', '')
+    console.log('token', token)
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token
