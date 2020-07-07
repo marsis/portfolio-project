@@ -1,0 +1,6 @@
+<div class="wrapper" [style.background]="imgUrl">
+  <h1 *ngIf="user">Hi, {{user.name}} </h1>
+  <app-registration *ngIf="!isLoggedIn"></app-registration>
+  <app-login *ngIf="!isLoggedIn"></app-login>
+  <a *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+</div>
