@@ -1,8 +1,10 @@
+import {formatDate} from '@angular/common';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {Select, Store} from '@ngxs/store';
-import {Observable, Subscription} from 'rxjs';
+import {interval, Observable, Subscription} from 'rxjs';
+import {map, mergeMap, startWith} from 'rxjs/operators';
 import {User} from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import {Logout} from 'src/app/state/auth.actions';
@@ -30,6 +32,11 @@ export class AppComponent implements OnInit, OnDestroy {
               private domSanitizer: DomSanitizer) {
 
   }
+
+  currentTime = interval(3000).pipe(
+    startWith(0), // here we can start from any value because all we need is to emit first value from the start
+    map(() => formatDate(Date.now(), 'EEEE, dd.MM.yyyy | HH:mm', 'en-US'))
+  );
 
   ngOnInit(): void {
     this.subscription.add(

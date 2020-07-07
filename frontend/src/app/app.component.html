@@ -1,6 +1,11 @@
 <div class="wrapper" [style.background]="imgUrl">
+  <h1 *ngIf="!user">Welcome !</h1>
   <h1 *ngIf="user">Hi, {{user.name}} </h1>
-  <app-registration *ngIf="!isLoggedIn"></app-registration>
+  <a routerLink="login">Login</a>
+  <a routerLink="sign-up">Sign Up</a>
+  <!--<app-registration *ngIf="!isLoggedIn"></app-registration>
   <app-login *ngIf="!isLoggedIn"></app-login>
-  <a *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+  <a *ngIf="isLoggedIn" (click)="logout()">Logout</a>-->
+  {{currentTime | async}}
+  <router-outlet></router-outlet>
 </div>

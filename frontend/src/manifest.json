@@ -1,17 +1,25 @@
 {
-"manifest_version": 2,
-"name": "ng2 Extension",
-"description": "Todo app as chrome extension using angular8",
-"version": "1.0",
-"browser_action": {
-"default_icon": "favicon.ico",
-"default_popup": "index.html"
-},
-"permissions": [],
-"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-"web_accessible_resources": [
-"assets/css/*",
-"assets/js/*",
-"assets/fonts/*"
-]
+  "manifest_version": 2,
+  "name": "ng2 Extension",
+  "description": "Todo app as chrome extension using angular8",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "favicon.ico",
+    "default_popup": "index.html"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "web_accessible_resources": [
+    "assets/css/*",
+    "assets/js/*",
+    "assets/fonts/*"
+  ],
+  "permissions": [
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "js": ["main-es2015.js"],
+      "matches": ["https://*.google.com/*"]
+    }
+  ]
 }
