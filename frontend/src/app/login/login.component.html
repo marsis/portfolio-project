@@ -20,7 +20,7 @@
 
 
 
-    <button class="submit-button1 w-button"
+    <button [style.backgroundColor]="(buttonColor$ | async)?.mainColors?.Vibrant"
             [class.disabled]="this.loginForm.invalid"
             type="submit">
      login

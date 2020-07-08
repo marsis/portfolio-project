@@ -26,10 +26,10 @@
 
 
 
-    <button class="submit-button1 w-button"
+    <button [style.backgroundColor]="(buttonColor$ | async)?.mainColors?.Vibrant"
             [class.disabled]="this.registrationForm.invalid"
             type="submit">
-      Totally ready to sign
+      Sign Up
     </button>
   </form>
 </mat-card>

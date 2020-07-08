@@ -2,28 +2,48 @@
   display: block;
   width: 100%;
   height: 100%;
-  background-size: cover!important;
-}
-:host {
+  background-size: cover !important;
 
-}
 
-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 
-h1 {
-  display: flex;
-  color: #eeeeee;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-}
+  h1 {
+    display: flex;
+    color: #eeeeee;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    font-size: 56px!important;
+  }
 
-app-registration {
-  position: absolute;
-  top: 0;
-  left: 0;
+  app-registration {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .time-block {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 56px;
+    font-weight: bold;
+    //color: #eeeeee;
+  }
+
+  .auth-block {
+    text-align: end;
+    padding-top: 25px;
+    a {
+      cursor: pointer;
+      margin: 5px;
+      //color: #eeeeee;
+      text-align: end;
+      text-decoration: none;
+    }
+  }
 }

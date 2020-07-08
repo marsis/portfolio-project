@@ -1,11 +1,21 @@
 <div class="wrapper" [style.background]="imgUrl">
-  <h1 *ngIf="!user">Welcome !</h1>
-  <h1 *ngIf="user">Hi, {{user.name}} </h1>
-  <a routerLink="login">Login</a>
-  <a routerLink="sign-up">Sign Up</a>
-  <!--<app-registration *ngIf="!isLoggedIn"></app-registration>
-  <app-login *ngIf="!isLoggedIn"></app-login>
-  <a *ngIf="isLoggedIn" (click)="logout()">Logout</a>-->
-  {{currentTime | async}}
+
+  <div class="auth-block" *ngIf="(isLoggedIn$ | async) else login_block">
+    <a  [style.color]="textColor?.bodyTextColor" (click)="logout()">Logout</a>
+
+  </div>
+  <ng-template #login_block>
+    <div class="auth-block">
+      <a [style.color]="textColor?.bodyTextColor" routerLink="login">Login</a>
+      <a [style.color]="textColor?.bodyTextColor" routerLink="sign-up">Sign Up</a>
+    </div>
+  </ng-template>
+
+
+  <h1 *ngIf="user$ |async as user else noUser" [style.color]="textColor?.titleTextColor">Hi, {{user?.name}} </h1>
+  <ng-template #noUser>
+    <h1 [style.color]="textColor?.titleTextColor">Welcome !</h1>
+  </ng-template>
+  <span [style.color]="textColor?.titleTextColor" class="time-block">{{currentTime | async}}</span>
   <router-outlet></router-outlet>
 </div>

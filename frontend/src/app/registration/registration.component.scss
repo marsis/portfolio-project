@@ -1,18 +1,5 @@
 :host {
-  //height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.registration-form {
-  display: flex;
-  flex-direction: column;
-}
-
-mat-card {
-  min-width: 300px;
-  width: 50%;
+  position: absolute;
+  right: 15px;
+  top: 50px;
 }

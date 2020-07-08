@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Store} from '@ngxs/store';
+import {Navigate} from '@ngxs/router-plugin';
+import {Select, Store} from '@ngxs/store';
+import {Observable} from 'rxjs';
+import {ColorsPalette} from 'src/app/models/colorsPalette.model';
 import {UserService} from 'src/app/services/user.service';
 import {Login} from 'src/app/state/auth.actions';
+import {ColorPaletteState} from 'src/app/state/palette.state';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +14,7 @@ import {Login} from 'src/app/state/auth.actions';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  @Select(ColorPaletteState.palette) buttonColor$: Observable<ColorsPalette>;
   loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
@@ -19,7 +23,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.store.dispatch(new Login(this.loginForm.value));
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.store.dispatch(new Login(this.loginForm.value)).subscribe(() => {
+      this.store.dispatch(new Navigate(['home']));
+    });
   }
 
   ngOnInit() {

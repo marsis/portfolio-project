@@ -22,7 +22,7 @@ export class UserService {
     return this.http.post('http://127.0.0.1:3000/logout', user);
   }
 
-  getFoto(): Observable<any> {
-    return this.http.get('http://127.0.0.1:3000/photos');
+  getBackground(): Observable<any> {
+    return this.http.get('http://127.0.0.1:3000/background');
   }
 }

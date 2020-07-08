@@ -3,7 +3,7 @@ require('./db/mongoose');
 
 const userRouter = require('./routers/user');
 const taskRouter = require('./routers/task');
-const unsplash = require('./routers/unsplash');
+const background = require('./routers/background');
 const cors = require('cors');
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(userRouter);
 app.use(taskRouter);
-app.use(unsplash);
+app.use(background);
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
 });

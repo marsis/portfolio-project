@@ -17,6 +17,7 @@ import {NgxsModule} from '@ngxs/store';
 import {JwtInterceptor} from 'src/app/interceptors/jwt.interceptor';
 import { RegistrationComponent } from 'src/app/registration/registration.component';
 import {UserState} from 'src/app/state/auth.state';
+import {ColorPaletteState} from 'src/app/state/palette.state';
 import {environment} from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -49,6 +50,7 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     NgxsModule.forRoot([
       UserState,
+      ColorPaletteState
     ], {developmentMode: !environment.production}),
     NgxsRouterPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),

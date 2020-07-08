@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Store} from '@ngxs/store';
+import {Navigate} from '@ngxs/router-plugin';
+import {Select, Store} from '@ngxs/store';
+import {Observable} from 'rxjs';
+import {ColorsPalette} from 'src/app/models/colorsPalette.model';
 import {UserService} from 'src/app/services/user.service';
 import {SignUp} from 'src/app/state/auth.actions';
+import {ColorPaletteState} from 'src/app/state/palette.state';
 
 @Component({
   selector: 'app-registration',
@@ -10,6 +14,8 @@ import {SignUp} from 'src/app/state/auth.actions';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
+  @Select(ColorPaletteState.palette) buttonColor$: Observable<ColorsPalette>;
+
   registrationForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
@@ -18,7 +24,12 @@ export class RegistrationComponent implements OnInit {
   }
 
   registration() {
-    this.store.dispatch(new SignUp(this.registrationForm.value));
+    if (this.registrationForm.invalid) {
+      return;
+    }
+    this.store.dispatch(new SignUp(this.registrationForm.value)).subscribe(() => {
+      this.store.dispatch(new Navigate(['home']));
+    });
   }
 
   ngOnInit() {
