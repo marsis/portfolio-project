@@ -5,7 +5,13 @@ import {HomeComponent} from 'src/app/home/home.component';
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    children: [
+      {
+        path: 'tasks',
+        loadChildren: () => import('src/app/task/task.module').then(m => m.TaskModule)
+      }
+    ]
   },
 ];
 
