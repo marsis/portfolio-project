@@ -23,3 +23,7 @@ export class DeleteTask {
 
   constructor(public id: string) { }
 }
+
+export class ResetTasks {
+  static readonly type ='[Task] Reset tasks'
+}

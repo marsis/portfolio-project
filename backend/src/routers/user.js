@@ -21,7 +21,7 @@ const error = require('../middleware/error');
 
 router.post('/users', async (req, res) => {
     const user = new User(req.body);
-    console.log('request:', req.body);
+
     try {
         await user.save();
         const token = await user.generateAuthToken();
@@ -38,9 +38,9 @@ router.post('/users', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password);
-        console.log('user', user);
+
         const token = await user.generateAuthToken();
-        console.log('token', token);
+
         res.send({user, token})
     } catch (e) {
         console.log(e);
@@ -49,12 +49,12 @@ router.post('/login', async (req, res) => {
 });
 
 router.post(`/logout`, auth, async (req, res) => {
-    console.log('req from auth 52', req)
+
     const token1 = req.header('Authorization').replace('Bearer ', '')
-    console.log('token from auth 54', token1)
+
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
-            console.log('token from auth 57', token)
+
             return token.token !== token1
         })
         await req.user.save();

@@ -1,13 +1,15 @@
+<!--<app-push-notification></app-push-notification>-->
 <div class="wrapper" [style.background]="imgUrl">
 
+
   <div class="auth-block" *ngIf="(isLoggedIn$ | async) else login_block">
-    <a  [style.color]="textColor?.bodyTextColor" (click)="logout()">Logout</a>
+    <a [style.color]="textColor?.titleTextColor" (click)="logout()">Logout</a>
 
   </div>
   <ng-template #login_block>
     <div class="auth-block">
-      <a [style.color]="textColor?.bodyTextColor" routerLink="login">Login</a>
-      <a [style.color]="textColor?.bodyTextColor" routerLink="sign-up">Sign Up</a>
+      <a [style.color]="textColor?.titleTextColor" routerLink="login">Login</a>
+      <a [style.color]="textColor?.titleTextColor" routerLink="sign-up">Sign Up</a>
     </div>
   </ng-template>
 

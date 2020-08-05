@@ -2,11 +2,11 @@ import {Action, Selector, State, StateContext, Store} from '@ngxs/store';
 import {tap} from 'rxjs/operators';
 import {Task} from 'src/app/models/task.model';
 import {TaskService} from 'src/app/services/task.service';
-import {AddTask, DeleteTask, GetTasks, UpdateTask} from 'src/app/state/task.actions';
+import {AddTask, DeleteTask, GetTasks, ResetTasks, UpdateTask} from 'src/app/state/task.actions';
 
 
 export class TaskStateModel {
-  tasksList: Task[];
+  tasksList: Task[] = [];
 
 }
 
@@ -68,12 +68,17 @@ export class TaskState {
     return this.taskService.deleteTask(id).pipe(
       tap(() => {
         let tasksList = [...ctx.getState().tasksList]
-        tasksList = tasksList.filter(el => el._id === id)
+        tasksList = tasksList.filter(el => el._id !== id)
 
         ctx.patchState({
           tasksList: [...tasksList]
         });
       })
     );
+  }
+
+  @Action(ResetTasks)
+  resetTasks(ctx: StateContext<TaskStateModel>) {
+    ctx.setState(new TaskStateModel())
   }
 }

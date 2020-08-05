@@ -1,7 +1,6 @@
 <mat-card>
   <form [formGroup]="registrationForm"
-        (ngSubmit)="registration()"
-        class="registration-form">
+        (ngSubmit)="registration()">
     <mat-form-field color="primary"
                     appearance="outline">
       <mat-label>Name</mat-label>
@@ -22,9 +21,6 @@
              type="password"
              formControlName="password">
     </mat-form-field>
-
-
-
     <button [style.backgroundColor]="(buttonColor$ | async)?.mainColors?.Vibrant"
             [class.disabled]="this.registrationForm.invalid"
             type="submit">

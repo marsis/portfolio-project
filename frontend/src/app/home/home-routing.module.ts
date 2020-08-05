@@ -8,7 +8,7 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'tasks',
+        path: '',
         loadChildren: () => import('src/app/task/task.module').then(m => m.TaskModule)
       }
     ]

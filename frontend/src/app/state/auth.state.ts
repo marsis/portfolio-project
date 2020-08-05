@@ -3,6 +3,8 @@ import { tap } from 'rxjs/operators';
 import { SignUpRequest, User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { Login, Logout, SignUp } from 'src/app/state/auth.actions';
+import {GetTasks, ResetTasks} from 'src/app/state/task.actions';
+import {TaskState, TaskStateModel} from 'src/app/state/task.state';
 
 
 export class UserStateModel {
@@ -91,6 +93,7 @@ export class UserState implements NgxsOnInit {
           token: null,
           user: null
         });
+        this.store.dispatch(new ResetTasks()).subscribe()
       })
     );
   }

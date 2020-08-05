@@ -29,4 +29,8 @@ export class TaskService {
   deleteTask(id) {
     return this.http.delete(`http://127.0.0.1:3000/tasks/${id}`);
   }
+
+  changeTaskOrder(tasks) {
+    return this.http.put(`http://127.0.0.1:3000/tasks/change-order`, tasks);
+  }
 }
