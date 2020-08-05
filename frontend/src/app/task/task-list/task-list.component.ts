@@ -1,6 +1,6 @@
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
@@ -19,7 +19,7 @@ import { Task } from 'src/app/models/task.model';
 })
 export class TaskListComponent implements OnInit {
 
-  //@Select(TaskState.tasks) tasksList$: Observable<Task[]>;
+  @ViewChild('formDirective', {static: true}) private formDirective: NgForm;
 
   taskForm: FormGroup;
   textColor: ColorsPalette;
@@ -41,7 +41,14 @@ export class TaskListComponent implements OnInit {
   }
 
   addTask() {
-    this.store.dispatch(new AddTask({description: this.taskForm.value.description, completed: false}))
+    this.store.dispatch(new AddTask({description: this.taskForm.value.description, completed: false})).subscribe(
+      () => {
+        this.formDirective.resetForm();
+        this.taskForm.reset()
+
+      },
+      (e)=> console.log(e)
+    )
   }
 
   deleteTask(item: Task) {
@@ -50,9 +57,7 @@ export class TaskListComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
-
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      //this.tasks.forEach((task, index) => task.order = index + 1 )
       this.taskService.changeTaskOrder(this.tasks).subscribe((data => console.log(data)))
     } else {
       transferArrayItem(event.previousContainer.data,

@@ -28,7 +28,6 @@ router.get('/background', async(req, res) => {
                     swatchesHex[swatch] = swatches[swatch].getHex()
                 }
             }
-            console.log('swatchesHex', swatchesHex)
             res.send({
                 imageUrl,
                 palette: {

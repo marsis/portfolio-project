@@ -1,10 +1,9 @@
 import { Action, NgxsOnInit, Selector, State, StateContext, Store } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
-import { SignUpRequest, User } from 'src/app/models/user.model';
+import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { Login, Logout, SignUp } from 'src/app/state/auth.actions';
-import {GetTasks, ResetTasks} from 'src/app/state/task.actions';
-import {TaskState, TaskStateModel} from 'src/app/state/task.state';
+import { ResetTasks } from 'src/app/state/task.actions';
 
 
 export class UserStateModel {
@@ -69,7 +68,6 @@ export class UserState implements NgxsOnInit {
   login(ctx: StateContext<UserStateModel>, { payload }: Login) {
     return this.userService.login(payload).pipe(
       tap((signInResponse: any) => {
-
         localStorage.setItem('chrome-ext', JSON.stringify(signInResponse));
         ctx.patchState({
           loggedIn: true,
@@ -78,7 +76,6 @@ export class UserState implements NgxsOnInit {
         });
 
       }),
-     // catchError((error) => ctx.dispatch(new LoginFailed(error)))
     );
   }
 

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Navigate} from '@ngxs/router-plugin';
-import {Select, Store} from '@ngxs/store';
-import {Observable} from 'rxjs';
-import {ColorsPalette} from 'src/app/models/colorsPalette.model';
-import {UserService} from 'src/app/services/user.service';
-import {Login} from 'src/app/state/auth.actions';
-import {ColorPaletteState} from 'src/app/state/palette.state';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Navigate } from '@ngxs/router-plugin';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { ColorsPalette } from 'src/app/models/colorsPalette.model';
+import { UserService } from 'src/app/services/user.service';
+import { Login } from 'src/app/state/auth.actions';
+import { ColorPaletteState } from 'src/app/state/palette.state';
 
 @Component({
   selector: 'app-login',

@@ -1,5 +1,3 @@
-import {Validators} from '@angular/forms';
-
 export interface User {
   createdAt: string;
   email: string;

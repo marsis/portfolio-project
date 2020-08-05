@@ -1,7 +1,7 @@
-import {Action, NgxsOnInit, Selector, State, StateContext, Store} from '@ngxs/store';
-import {tap} from 'rxjs/operators';
+import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
+import { tap } from 'rxjs/operators';
 import { ColorsPalette } from 'src/app/models/colorsPalette.model';
-import {UserService} from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user.service';
 
 import { GetColorPalette } from 'src/app/state/palette.actions';
 

@@ -1,8 +1,8 @@
-import {Action, Selector, State, StateContext, Store} from '@ngxs/store';
-import {tap} from 'rxjs/operators';
-import {Task} from 'src/app/models/task.model';
-import {TaskService} from 'src/app/services/task.service';
-import {AddTask, DeleteTask, GetTasks, ResetTasks, UpdateTask} from 'src/app/state/task.actions';
+import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
+import { tap } from 'rxjs/operators';
+import { Task } from 'src/app/models/task.model';
+import { TaskService } from 'src/app/services/task.service';
+import { AddTask, DeleteTask, GetTasks, ResetTasks, UpdateTask } from 'src/app/state/task.actions';
 
 
 export class TaskStateModel {

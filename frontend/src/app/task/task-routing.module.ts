@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { TaskListComponent } from 'src/app/task/task-list/task-list.component';
 import { TaskComponent } from 'src/app/task/task/task.component';
 

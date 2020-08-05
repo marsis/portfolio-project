@@ -14,7 +14,10 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NGXS_PLUGINS, NgxsModule} from '@ngxs/store';
-import { JwtInterceptor } from 'src/app/interceptors/jwt.interceptor';
+import {CoreMaterialModule} from 'src/app/core/core-material.module';
+import {CoreModule} from 'src/app/core/core.module';
+import {ApiInterceptor} from 'src/app/core/interceptors/api.interceptor';
+import { JwtInterceptor } from 'src/app/core/interceptors/jwt.interceptor';
 import { RegistrationComponent } from 'src/app/registration/registration.component';
 import {Logout} from 'src/app/state/auth.actions';
 import { UserState } from 'src/app/state/auth.state';
@@ -45,29 +48,14 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatAutocompleteModule,
-    MatCheckboxModule,
-    MatSnackBarModule,
-    MatBottomSheetModule,
+    CoreModule,
+    CoreMaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxsModule.forRoot([
-      UserState,
-      ColorPaletteState,
-      TaskState
-    ], {developmentMode: !environment.production}),
-    NgxsRouterPluginModule.forRoot(),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
-    DragDropModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true},
   ],
   exports: [
 

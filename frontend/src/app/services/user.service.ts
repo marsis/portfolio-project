@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
-import {LoginRequest, SignUpRequest} from 'src/app/models/user.model';
+import { Observable } from 'rxjs';
+import { LoginRequest, SignUpRequest, User } from 'src/app/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +11,18 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   addUser(user: SignUpRequest) {
-    return this.http.post('http://127.0.0.1:3000/users', user);
+    return this.http.post('/users', user);
   }
 
   login(user: LoginRequest) {
-    return this.http.post('http://127.0.0.1:3000/login', user);
+    return this.http.post('/login', user);
   }
 
-  logout(user) {
-    return this.http.post('http://127.0.0.1:3000/logout', user);
+  logout(user: User) {
+    return this.http.post('/logout', user);
   }
 
   getBackground(): Observable<any> {
-    return this.http.get('http://127.0.0.1:3000/background');
+    return this.http.get('/background');
   }
 }

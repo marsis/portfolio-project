@@ -1,8 +1,8 @@
 <div class="container">
 
   <form [formGroup]="taskForm"
-        (ngSubmit)="addTask()"
-        >
+        #formDirective=ngForm
+        (ngSubmit)="addTask()">
 
     <mat-form-field color="primary"
                     appearance="outline">
@@ -23,6 +23,5 @@
                 (click)="deleteTask(item)"
       >close</mat-icon>
     </div>
-
   </div>
 </div>

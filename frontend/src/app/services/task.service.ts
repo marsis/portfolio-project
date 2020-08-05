@@ -1,6 +1,6 @@
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Task} from 'src/app/models/task.model';
+import { Task } from 'src/app/models/task.model';
 
 
 @Injectable({
@@ -11,26 +11,26 @@ export class TaskService {
   constructor(private http: HttpClient) { }
 
   getTasks() {
-    return this.http.get('http://127.0.0.1:3000/tasks');
+    return this.http.get('/tasks');
   }
 
   getTaskById(id: string) {
-    return this.http.get(`http://127.0.0.1:3000/tasks/${id}`);
+    return this.http.get(`/tasks/${id}`);
   }
 
   addTask(task: Task) {
-    return this.http.post('http://127.0.0.1:3000/tasks', task);
+    return this.http.post('/tasks', task);
   }
 
   updateTask(task: Task) {
-    return this.http.patch(`http://127.0.0.1:3000/tasks/${task._id}`, task);
+    return this.http.patch(`/tasks/${task._id}`, task);
   }
 
-  deleteTask(id) {
-    return this.http.delete(`http://127.0.0.1:3000/tasks/${id}`);
+  deleteTask(id: string) {
+    return this.http.delete(`/tasks/${id}`);
   }
 
-  changeTaskOrder(tasks) {
-    return this.http.put(`http://127.0.0.1:3000/tasks/change-order`, tasks);
+  changeTaskOrder(tasks: Task[]) {
+    return this.http.put(`/tasks/change-order`, tasks);
   }
 }

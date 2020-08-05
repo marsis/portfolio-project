@@ -1,5 +1,4 @@
-import {LoginRequest, SignUpRequest} from 'src/app/models/user.model';
-
+import { LoginRequest, SignUpRequest } from 'src/app/models/user.model';
 
 export class Logout {
   static readonly type = '[App] Logout';
