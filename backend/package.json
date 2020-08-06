@@ -20,5 +20,9 @@
     "node-vibrant": "^3.1.5",
     "unsplash-js": "^6.0.0",
     "validator": "^13.0.0"
-  }
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ]
 }

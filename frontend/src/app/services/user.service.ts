@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {ColorsPalette} from 'src/app/models/colorsPalette.model';
 import { LoginRequest, SignUpRequest, User } from 'src/app/models/user.model';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   addUser(user: SignUpRequest) {
-    return this.http.post('/users', user);
+    return this.http.post<User>('/users', user);
   }
 
   login(user: LoginRequest) {
@@ -19,10 +20,10 @@ export class UserService {
   }
 
   logout(user: User) {
-    return this.http.post('/logout', user);
+    return this.http.post<User>('/logout', user);
   }
 
   getBackground(): Observable<any> {
-    return this.http.get('/background');
+    return this.http.get<ColorsPalette>('/background');
   }
 }

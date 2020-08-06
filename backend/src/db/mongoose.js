@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+const config = require('../config');
 
-mongoose.connect('mongodb://127.0.0.1:27017/chrome-ext-api', {
+const url = config.mongoUrl;
+
+mongoose.connect(url, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
