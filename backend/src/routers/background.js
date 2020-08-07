@@ -40,9 +40,10 @@ router.get('/background', async(req, res) => {
             })
         }).catch(e => console.log(e))
     } catch(e) {
-        res.status(404).send("Page not found")
+        res.status(404).send({body: {message: "Page not found"}})
     }
 
 });
+
 
 module.exports = router;
