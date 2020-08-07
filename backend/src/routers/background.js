@@ -19,7 +19,9 @@ global.fetch = fetch;
 router.get('/background', async(req, res) => {
     let imageUrl;
     try {
+
         await fetch(`https://source.unsplash.com/1600x900/?mountains`).then((response)=> imageUrl = response.url)
+            .catch(e => console.log(e))
 
         await Vibrant.from(imageUrl).getPalette((err, swatches) => {
             const swatchesHex = {}
@@ -36,7 +38,7 @@ router.get('/background', async(req, res) => {
                     bodyTextColor: swatches.Vibrant.bodyTextColor
                 }
             })
-        })
+        }).catch(e => console.log(e))
     } catch(e) {
         res.status(404).send()
     }
