@@ -7,23 +7,23 @@ const error = require('../middleware/error');
 
 const User = require('../middleware/controllers/userCtrl');
 
-router.post('/users', User.addUser)
+router.post('/api/users', User.addUser)
 
-router.post('/login', User.login)
+router.post('/api/login', User.login)
 
-router.post(`/logout`, auth, User.logout)
+router.post(`/api/logout`, auth, User.logout)
 
-router.post('/users/logoutAll', auth, User.logoutAll)
+router.post('/api/users/logoutAll', auth, User.logoutAll)
 
-router.get('/users/me', auth, User.getUser)
+router.get('/api/users/me', auth, User.getUser)
 
- router.get('/users/:id', User.getUserById)
+ router.get('/api/users/:id', User.getUserById)
 
-router.patch('/users/me', auth, User.updateUser);
+router.patch('/api/users/me', auth, User.updateUser);
 
-router.delete('/users/:id', User.deleteUser);
+router.delete('/api/users/:id', User.deleteUser);
 
-router.delete('/users/me', auth, User.deleteMe)
+router.delete('/api/users/me', auth, User.deleteMe)
 
 /*
  router.post('/users/me/avatar', auth, upload.single('avatar'), async(req, res) => {

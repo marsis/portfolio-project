@@ -16,7 +16,7 @@ global.fetch = fetch;
 
 
 
-router.get('/background', async(req, res) => {
+router.get('/api/background', async(req, res) => {
     let imageUrl;
     try {
 
