@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {HomeRoutingModule} from 'src/app/home/home-routing.module';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { HomeRoutingModule } from 'src/app/home/home-routing.module';
 import { HomeComponent } from 'src/app/home/home.component';
 
 
@@ -11,7 +12,8 @@ import { HomeComponent } from 'src/app/home/home.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    GoogleChartsModule,
   ]
 })
 export class HomeModule { }
