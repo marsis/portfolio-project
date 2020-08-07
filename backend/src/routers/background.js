@@ -21,7 +21,7 @@ router.get('/background', async(req, res) => {
     try {
 
         await fetch(`https://source.unsplash.com/1600x900/?mountains`).then((response)=> imageUrl = response.url)
-            .catch(e => console.log(e))
+            .catch(e => res.status(404).send({body: {message: "Page not found-1"}, error: e}))
 
         await Vibrant.from(imageUrl).getPalette((err, swatches) => {
             const swatchesHex = {}
@@ -38,7 +38,7 @@ router.get('/background', async(req, res) => {
                     bodyTextColor: swatches.Vibrant.bodyTextColor
                 }
             })
-        }).catch(e => console.log(e))
+        }).catch(e => res.status(404).send({body: {message: "Page not found -2"}, error: e}))
     } catch(e) {
         res.status(404).send({body: {message: "Page not found"}})
     }
