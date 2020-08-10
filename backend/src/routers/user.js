@@ -17,7 +17,7 @@ router.post('/api/users/logoutAll', auth, User.logoutAll)
 
 router.get('/api/users/me', auth, User.getUser)
 
- router.get('/api/users/:id', User.getUserById)
+router.get('/api/users/:id', User.getUserById)
 
 router.patch('/api/users/me', auth, User.updateUser);
 
