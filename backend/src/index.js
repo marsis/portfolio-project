@@ -5,6 +5,7 @@ const userRouter = require('./routers/user');
 const taskRouter = require('./routers/task');
 const background = require('./routers/background');
 const cors = require('cors');
+
 const app = express();
 
 app.use(cors());

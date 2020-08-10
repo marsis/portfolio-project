@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const config = require('../config');
 
-const url = process.env.MONGODB_URI || config.mongoUrl;
+const url = 'mongodb://' + 'alla' + ':' + 'qwerty123' + '@ds145146.mlab.com:45146/heroku_rxn2r7kr' || config.mongoUrl;
 
+//'mongoUrl': 'mongodb+srv://app_user:egFSD1byuwrlQYfz@mongodb-dev-cluster01-wb7eq.gcp.mongodb.net/sidekick?retryWrites=true&w=majority',
+
+//mongoose.connect('mongodb://' + mongoCredentials.username + ':' + mongoCredentialss.password + '@ds012345.mlab.com:12345/mydatabase-db');
 mongoose.connect(url, {
     useNewUrlParser: true,
     useCreateIndex: true,
