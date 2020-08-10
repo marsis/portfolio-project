@@ -6,7 +6,7 @@ const url = 'mongodb://' + 'alla' + ':' + 'qwerty123' + '@ds145146.mlab.com:4514
 //'mongoUrl': 'mongodb+srv://app_user:egFSD1byuwrlQYfz@mongodb-dev-cluster01-wb7eq.gcp.mongodb.net/sidekick?retryWrites=true&w=majority',
 
 //mongoose.connect('mongodb://' + mongoCredentials.username + ':' + mongoCredentialss.password + '@ds012345.mlab.com:12345/mydatabase-db');
-mongoose.connect(url, {
+const connect = mongoose.connect(url, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true},
@@ -16,3 +16,9 @@ mongoose.connect(url, {
             process.exit(1);
         }}
 );
+
+
+connect.then((db) => {
+    console.log('Connected correctly to server');
+    console.log(db);
+}, (err) => { console.log(err); });
