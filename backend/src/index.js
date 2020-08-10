@@ -1,4 +1,5 @@
 const express = require('express');
+require('./db/mongoose');
 
 const userRouter = require('./routers/user');
 const taskRouter = require('./routers/task');
@@ -13,7 +14,6 @@ app.use(express.json());
 app.use(userRouter);
 app.use(taskRouter);
 app.use(background);
-
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", '*');
