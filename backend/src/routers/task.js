@@ -4,7 +4,7 @@ const router = new express.Router();
 const Task = require('../middleware/controllers/taskCtrl')
 const auth = require('../middleware/auth')
 
-router.post('/tasks', auth, Task.addTask)
+router.post('/api/tasks', auth, Task.addTask)
 // GET /tasks?completed=true
 // GET /task?limit=10&skip=20
 // GET /tasks?sortBy=cteatedAt:desc
