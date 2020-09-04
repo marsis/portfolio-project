@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiUrl: 'http://127.0.0.1:3000/api'
-  apiUrl: 'https://protected-anchorage-41158.herokuapp.com/https://port-backend-api.herokuapp.com/api'
+  apiUrl: 'http://127.0.0.1:3000/api'
+  //apiUrl: 'https://protected-anchorage-41158.herokuapp.com/https://port-backend-api.herokuapp.com/api'
 };
 
 /*
