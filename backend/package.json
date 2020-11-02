@@ -24,5 +24,8 @@
   "keywords": [
     "example",
     "heroku"
-  ]
+  ],
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
