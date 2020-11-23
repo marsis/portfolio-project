@@ -90,7 +90,7 @@ export class UserState implements NgxsOnInit {
           token: null,
           user: null
         });
-        this.store.dispatch(new ResetTasks()).subscribe()
+        this.store.dispatch(new ResetTasks()).subscribe();
       })
     );
   }

@@ -41,7 +41,7 @@ export class TaskState {
   addTask(ctx: StateContext<TaskStateModel>, { task }: AddTask) {
     return this.taskService.addTask(task).pipe(
       tap((task: Task) => {
-        const tasksList = ctx.getState().tasksList
+        const tasksList = ctx.getState().tasksList;
         ctx.patchState({
           tasksList: [...tasksList, task]
         });
@@ -53,9 +53,9 @@ export class TaskState {
   updateTask(ctx: StateContext<TaskStateModel>, {task}: UpdateTask) {
     return this.taskService.updateTask(task).pipe(
       tap((task: Task) => {
-        const tasksList = ctx.getState().tasksList
-        const index = tasksList.findIndex(el => el._id === task._id)
-        tasksList[index] = task
+        const tasksList = ctx.getState().tasksList;
+        const index = tasksList.findIndex(el => el._id === task._id);
+        tasksList[index] = task;
         ctx.patchState({
           tasksList: [...tasksList]
         });
@@ -67,8 +67,8 @@ export class TaskState {
   deleteTask(ctx: StateContext<TaskStateModel>, { id }: DeleteTask ) {
     return this.taskService.deleteTask(id).pipe(
       tap(() => {
-        let tasksList = [...ctx.getState().tasksList]
-        tasksList = tasksList.filter(el => el._id !== id)
+        let tasksList = [...ctx.getState().tasksList];
+        tasksList = tasksList.filter(el => el._id !== id);
 
         ctx.patchState({
           tasksList: [...tasksList]
@@ -79,6 +79,6 @@ export class TaskState {
 
   @Action(ResetTasks)
   resetTasks(ctx: StateContext<TaskStateModel>) {
-    ctx.setState(new TaskStateModel())
+    ctx.setState(new TaskStateModel());
   }
 }

@@ -23,7 +23,7 @@ export class TaskListComponent implements OnInit {
 
   taskForm: FormGroup;
   textColor: ColorsPalette;
-  tasks: Task[] =[];
+  tasks: Task[] = [];
 
   constructor(private store: Store,
               private formBuilder: FormBuilder,
@@ -33,32 +33,32 @@ export class TaskListComponent implements OnInit {
     this.store.select(ColorPaletteState.palette).subscribe(palette => this.textColor = palette);
     this.taskForm = this.formBuilder.group({
       description: ['', Validators.required]
-    })
+    });
     this.store.dispatch(new GetTasks()).pipe(
       switchMap(() => this.store.select(TaskState.tasks)),
       tap((tasks) => this.tasks = [...tasks])
-    ).subscribe()
+    ).subscribe();
   }
 
   addTask() {
     this.store.dispatch(new AddTask({description: this.taskForm.value.description, completed: false})).subscribe(
       () => {
         this.formDirective.resetForm();
-        this.taskForm.reset()
+        this.taskForm.reset();
 
       },
-      (e)=> console.log(e)
-    )
+      (e) => console.log(e)
+    );
   }
 
   deleteTask(item: Task) {
-    this.store.dispatch(new DeleteTask(item._id))
+    this.store.dispatch(new DeleteTask(item._id));
   }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      this.taskService.changeTaskOrder(this.tasks).subscribe((data => console.log(data)))
+      this.taskService.changeTaskOrder(this.tasks).subscribe((data => console.log(data)));
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,

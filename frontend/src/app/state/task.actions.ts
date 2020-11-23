@@ -25,5 +25,5 @@ export class DeleteTask {
 }
 
 export class ResetTasks {
-  static readonly type ='[Task] Reset tasks'
+  static readonly type = '[Task] Reset tasks';
 }

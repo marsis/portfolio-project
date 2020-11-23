@@ -8,7 +8,6 @@ import {interval, Observable, Subscription} from 'rxjs';
 import {map, mergeMap, startWith} from 'rxjs/operators';
 import {ColorsPalette} from 'src/app/models/colorsPalette.model';
 import {User} from 'src/app/models/user.model';
-import {UserService} from 'src/app/services/user.service';
 import {Logout} from 'src/app/state/auth.actions';
 import {UserState} from 'src/app/state/auth.state';
 import {GetColorPalette} from 'src/app/state/palette.actions';

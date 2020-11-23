@@ -1,10 +1,6 @@
-<!--<app-push-notification></app-push-notification>-->
 <div class="wrapper" [style.background]="imgUrl">
-
-
   <div class="auth-block" *ngIf="(isLoggedIn$ | async) else login_block">
     <a [style.color]="textColor?.titleTextColor" (click)="logout()">Logout</a>
-
   </div>
   <ng-template #login_block>
     <div class="auth-block">
@@ -12,8 +8,6 @@
       <a [style.color]="textColor?.titleTextColor" routerLink="sign-up">Sign Up</a>
     </div>
   </ng-template>
-
-
   <h1 *ngIf="user$ |async as user else noUser" [style.color]="textColor?.titleTextColor">Hi, {{user?.name}} </h1>
   <ng-template #noUser>
     <h1 [style.color]="textColor?.titleTextColor">Welcome !</h1>
