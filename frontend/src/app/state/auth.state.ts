@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { Login, Logout, SignUp } from 'src/app/state/auth.actions';
 import { ResetTasks } from 'src/app/state/task.actions';
+import { Injectable } from '@angular/core';
 
 
 export class UserStateModel {
@@ -16,6 +17,7 @@ export class UserStateModel {
   name: 'auth',
   defaults: new UserStateModel()
 })
+@Injectable()
 export class UserState implements NgxsOnInit {
   constructor(
     private store: Store,

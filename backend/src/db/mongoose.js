@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const config = require('../config');
 
-const url = 'mongodb://' + 'alla' + ':' + 'qwerty123' + '@ds145146.mlab.com:45146/heroku_rxn2r7kr' || config.mongoUrl;
+// const url = 'mongodb://' + 'alla' + ':' + 'qwerty123' + '@ds145146.mlab.com:45146/heroku_rxn2r7kr' || config.mongoUrl;
+const url = config.mongoUrl;
 
 //'mongoUrl': 'mongodb+srv://app_user:egFSD1byuwrlQYfz@mongodb-dev-cluster01-wb7eq.gcp.mongodb.net/sidekick?retryWrites=true&w=majority',
 
@@ -17,8 +18,8 @@ const connect = mongoose.connect(url, {
         }}
 );
 
-
+/*
 connect.then((db) => {
     console.log('Connected correctly to server');
     console.log(db);
-}, (err) => { console.log(err); });
+}, (err) => { console.log(err); });*/

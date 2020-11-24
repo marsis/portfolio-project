@@ -4,6 +4,7 @@ import { ColorsPalette } from 'src/app/models/colorsPalette.model';
 import { UserService } from 'src/app/services/user.service';
 
 import { GetColorPalette } from 'src/app/state/palette.actions';
+import { Injectable } from '@angular/core';
 
 export class ColorPaletteModel {
   palette: ColorsPalette;
@@ -14,6 +15,7 @@ export class ColorPaletteModel {
   name: 'colorPalette',
   defaults: new ColorPaletteModel()
 })
+@Injectable()
 export class ColorPaletteState {
   constructor(
     private store: Store,

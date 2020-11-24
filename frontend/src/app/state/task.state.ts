@@ -3,6 +3,7 @@ import { tap } from 'rxjs/operators';
 import { Task } from 'src/app/models/task.model';
 import { TaskService } from 'src/app/services/task.service';
 import { AddTask, DeleteTask, GetTasks, ResetTasks, UpdateTask } from 'src/app/state/task.actions';
+import { Injectable } from '@angular/core';
 
 
 export class TaskStateModel {
@@ -14,6 +15,7 @@ export class TaskStateModel {
   name: 'tasks',
   defaults: new TaskStateModel()
 })
+@Injectable()
 export class TaskState {
   constructor(
     private store: Store,
