@@ -9,9 +9,9 @@ import { TaskComponent } from './task/task.component';
 
 
 @NgModule({
-  declarations: [TaskListComponent,
+  declarations: [
+    TaskListComponent,
     TaskComponent,
-
   ],
   imports: [
     CommonModule,

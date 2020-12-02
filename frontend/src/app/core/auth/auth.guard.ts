@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree} from '@angular/router';
-import {Store} from '@ngxs/store';
-
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
 import { UserState } from 'src/app/state/auth.state';
 
 @Injectable({

@@ -1,8 +1,8 @@
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Store} from '@ngxs/store';
-import {Observable} from 'rxjs';
-import {UserState} from 'src/app/state/auth.state';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { UserState } from 'src/app/state/auth.state';
 
 
 @Injectable()

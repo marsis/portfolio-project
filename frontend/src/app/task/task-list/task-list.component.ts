@@ -1,15 +1,14 @@
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
-import {Store} from '@ngxs/store';
-import {switchMap, tap} from 'rxjs/operators';
-import {ColorsPalette} from 'src/app/models/colorsPalette.model';
-import {TaskService} from 'src/app/services/task.service';
-import {ColorPaletteState} from 'src/app/state/palette.state';
-
-import {AddTask, DeleteTask, GetTasks} from 'src/app/state/task.actions';
-import {TaskState} from 'src/app/state/task.state';
-import {Task} from 'src/app/models/task.model';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { switchMap, tap } from 'rxjs/operators';
+import { ColorsPalette } from 'src/app/models/colorsPalette.model';
+import { TaskService } from 'src/app/services/task.service';
+import { ColorPaletteState } from 'src/app/state/palette.state';
+import { AddTask, DeleteTask, GetTasks } from 'src/app/state/task.actions';
+import { TaskState } from 'src/app/state/task.state';
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-task-list',

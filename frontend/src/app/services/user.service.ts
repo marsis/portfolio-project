@@ -1,7 +1,7 @@
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {ColorsPalette} from 'src/app/models/colorsPalette.model';
+import { ColorsPalette } from 'src/app/models/colorsPalette.model';
 import { LoginRequest, SignUpRequest, User } from 'src/app/models/user.model';
 
 @Injectable({
