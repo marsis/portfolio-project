@@ -1,16 +1,15 @@
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import {Store} from '@ngxs/store';
 import {switchMap, tap} from 'rxjs/operators';
 import {ColorsPalette} from 'src/app/models/colorsPalette.model';
 import {TaskService} from 'src/app/services/task.service';
 import {ColorPaletteState} from 'src/app/state/palette.state';
 
 import {AddTask, DeleteTask, GetTasks} from 'src/app/state/task.actions';
-import { TaskState } from 'src/app/state/task.state';
-import { Task } from 'src/app/models/task.model';
+import {TaskState} from 'src/app/state/task.state';
+import {Task} from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-task-list',
@@ -51,14 +50,14 @@ export class TaskListComponent implements OnInit {
     );
   }
 
-  deleteTask(item: Task) {
-    this.store.dispatch(new DeleteTask(item._id));
+  deleteTask(id: string) {
+    this.store.dispatch(new DeleteTask(id));
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      this.taskService.changeTaskOrder(this.tasks).subscribe((data => console.log(data)));
+      this.taskService.changeTaskOrder(this.tasks).subscribe();
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,

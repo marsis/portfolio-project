@@ -1,1 +1,8 @@
-<p>task works!</p>
+<div class="list-item" [style.color]="textColor?.titleTextColor" cdkDrag>{{task.description}}
+  <mat-icon class="close-button"
+            aria-hidden="false"
+            aria-label="close"
+            [style.color]="textColor?.titleTextColor"
+            (click)="deleteTask(task._id)"
+  >close</mat-icon>
+</div>

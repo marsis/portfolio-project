@@ -14,14 +14,12 @@
     </mat-form-field>
   </form>
   <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="tasks"
-     class="list" (cdkDropListDropped)="drop($event)">
-    <div class="list-item" [style.color]="textColor?.titleTextColor" *ngFor="let item of tasks" cdkDrag>{{item.description}}
-      <mat-icon class="close-button"
-                aria-hidden="false"
-                aria-label="close"
-                [style.color]="textColor?.titleTextColor"
-                (click)="deleteTask(item)"
-      >close</mat-icon>
-    </div>
+       class="list" (cdkDropListDropped)="drop($event)">
+
+    <app-task [task]="task"
+              [textColor]="textColor"
+              *ngFor="let task of tasks"
+              (delete)="deleteTask($event)"></app-task>
+
   </div>
 </div>
